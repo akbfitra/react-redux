@@ -10,14 +10,16 @@ const App = () => {
   
   const [ dataRandom, setDataRandom] = useState([]) 
   const [ search, setSearch] = useState('') 
+  const [isLoading, setIsLoading] = useState(false)
   
   const fetch = () => {
+    setIsLoading(true)
     axios({
       method:'GET',
       url: 'https://db.ygoprodeck.com/api/v5/cardinfo.php?banlist=tcg&level=4&sort=name'
     })
       .then(({data}) => {
-        
+        setIsLoading(false)
         setDataRandom(data)
       })
       .catch(({response}) => {
@@ -30,13 +32,14 @@ const App = () => {
   }
 
   const fetchSearch = (e) => {
+    setIsLoading(true)
     e.preventDefault()
     axios({
       method:'GET',
       url: `https://db.ygoprodeck.com/api/v5/cardinfo.php?fname=${search}`
     })
       .then(({data}) => {
-        console.log(data, 'aaaaaaaaaaaaaaaa')
+        setIsLoading(false)
         setDataRandom(data)
       })
       .catch(({response}) => {
@@ -47,15 +50,15 @@ const App = () => {
   useEffect( () => {
     fetch()
   }, [])
-  console.log(search)
-  console.log(dataRandom)
+
+  
 
   return(
     <div>
       <Navbar handleChange= { handleChangeSearch } keySearch = { search } handleSearch = { fetchSearch }/>
       <div className="container">
         <div className="row">
-          <ListCard data={dataRandom}/> 
+          <ListCard data={dataRandom} loading = { isLoading }/> 
         </div>
       </div>
     </div>
