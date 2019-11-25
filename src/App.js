@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Navbar from './components/Navbar'
 import ListCard from './components/ListCard'
@@ -34,12 +34,11 @@ class App extends Component{
     return(
       <div>
         <Navbar/>
-        <div class="container">
-          <div class="row">
-           
-              <ListCard data={this.state.dataRandom}/> 
+        <div className="container">
+          <div className="row">
           
-
+            <ListCard data={this.state.dataRandom}/> 
+          
           </div>
         </div>
       </div>

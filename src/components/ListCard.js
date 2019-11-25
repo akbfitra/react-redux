@@ -1,24 +1,27 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
-class ListCard extends Component{
-  render(){
-    return(
-      <div class ="row justify-content-between">
-        {
-          this.props.data.map((datacard) => (
-            <div class="card col-sm-3 my-2 mx-1 shadow p-3 mb-5">
-              <img src={datacard.card_images[0].image_url} class="card-img-top" alt="..."/>
-              <div class="card-body">
-                <h5 class="card-title">{datacard.name}</h5>
-                <p class="card-text">{datacard.desc}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+
+const ListCard = (props) => {
+  return(
+    <div className ="row justify-content-between">
+      {
+        props.data.map((datacard) => (
+          <div key={datacard.id} className="card col-sm-3 my-2 mx-1 shadow p-3 mb-5">
+            <img src={datacard.card_images[0].image_url} className="card-img-top" alt="..."/>
+            <div className="card-body">
+              <h5 className="card-title">{datacard.name}</h5>
+              <p className="card-text">Race: {datacard.race}</p>
+              <p className="card-text">Atrribute: {datacard.attribute}</p>
+              <p className="card-text">Star: {datacard.level}</p>
+              <a href="#" className="btn btn-primary">Detail</a>
             </div>
-          ))
-        }
-      </div>
-    )
-  }
+          </div>
+        ))
+      }
+    </div>
+  )
+  
 }
+
 
 export default ListCard

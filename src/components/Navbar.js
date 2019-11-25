@@ -1,21 +1,22 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
-class Navbar extends Component {
-  render() {
-    return(
-      <div>
-        <nav class="navbar navbar-light bg-dark">
-          <a class="navbar-brand" href="#">
+const Navbar = () => {
+  return (
+    <div>
+      <nav className="navbar navbar-light bg-dark">
+        <a className="navbar-brand" href="#">
+          <div style={{color: "white"}}>
             Yugioh Trading Card
-          </a>
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </nav>
-      </div>
-    )
-  }
+          </div>
+        </a>
+        <form className="form-inline">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search Card" aria-label="Search"/>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Card</button>
+        </form>
+      </nav>
+    </div>
+  )
 }
+
 
 export default Navbar
