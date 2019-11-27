@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react'
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 const ListCard = (props) => {
   
@@ -7,7 +13,7 @@ const ListCard = (props) => {
     <div className ="row justify-content-between">
       { props.loading
         ? 
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center" style={{width: "80vw", height:"80vh", alignItems: "center"}}>
             <div className="spinner-grow" style={{width: "6rem" , height: "6rem"}} role="status">
               <span className="sr-only">Loading...</span>
             </div>
@@ -19,15 +25,16 @@ const ListCard = (props) => {
             <div className="card-body">
               <h5 className="card-title">{datacard.name}</h5>
               <p className="card-text">Race: {datacard.race}</p>
-              <p className="card-text">Atrribute: {datacard.attribute}</p>
-              <p className="card-text">Star: {datacard.level}</p>
-              <a href="#" className="btn btn-primary">Detail</a>
+              <p className="card-text">Type: {datacard.type}</p>
+              
+              <Link to={`/detail/${datacard.id}`}> <div href="#" className="btn btn-secondary btn-lg btn-block">Detail</div></Link>
             </div>
           </div>
         ))
       }
       
     </div>
+    
   )
   
 }
