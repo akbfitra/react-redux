@@ -7,6 +7,8 @@ import {
   useParams
 } from "react-router-dom";
 
+import { withRouter } from "react-router";
+
 const ListCard = (props) => {
   
   return(
@@ -40,4 +42,4 @@ const ListCard = (props) => {
 }
 
 
-export default ListCard
+export default withRouter(ListCard)
